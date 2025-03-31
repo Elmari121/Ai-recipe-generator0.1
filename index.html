@@ -12,12 +12,15 @@
     <div class="container">
         <header>
             <h1>AI Recipe Generator</h1>
+            <p>Enter ingredients like "chicken, tomatoes, onions" and let the AI suggest a recipe!</p>
         </header>
         <main>
             <form id="Ai-recipe-generator-form">
-                <input type="text" id="ingredients" placeholder="Enter your ingredients" autofocus required autocomplete="off" class="instructions" />
-                <input type="submit" class="button" />
+                <input type="text" id="ingredients" placeholder="Enter ingredients (e.g., chicken, tomatoes, onions)" autofocus required autocomplete="off" class="instructions" />
+                <input type="submit" class="button" value="Generate Recipe" />
+                <button type="button" id="clear-button" class="button">Clear</button>
             </form>
+            <div id="loading-indicator" class="loading">Generating recipe...</div>
             <div class="Recipe" id="Recipe"></div>
         </main>  
         <footer>This project was coded by <a href="https://github.com/Elmari121" target="_blank"> Elmari Robberts</a>
@@ -28,4 +31,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
