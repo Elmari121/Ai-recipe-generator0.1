@@ -1,4 +1,5 @@
-function displayrecipe(response) {
+
+function displayRecipe(response) {
     new Typewriter("#Recipe", {
         strings: response.data.answer,
         autoStart: true,
@@ -10,18 +11,37 @@ function displayrecipe(response) {
 
 function generateRecipe(event) {
     event.preventDefault(); 
-    let instructionsinput=document.querySelector("#user-instructions").value;
-    let apikey = "30927dtfa44b4770359oe8258a9c5b2c"; 
-    let prompt ='Generate a recipe using the following ingredients:$(instructionsinput.value)';
-    let context ="you are a chef with great knoledge of cooking and you are able to generate a recipe using ingredients provided by the user.";
-    let apiurl='https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apikey}';
-   axios.get(apiurl).then(displayrecipe);}
 
-    const ingredients = document.querySelector("#ingredients").value;
-    
    
+    let ingredients = document.querySelector("#ingredients").value;
+    if (!ingredients) {
+        alert("Please enter some ingredients.");
+        return;
+    }
+
+  
+    let apikey = "30927dtfa44b4770359oe8258a9c5b2c"; 
+    let prompt = `Generate a recipe using the following ingredients: ${ingredients}`;
+    let context = "You are a chef with great knowledge of cooking and you are able to generate a recipe using ingredients provided by the user.";
+
+    
+    let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apikey}`;
+
+    
+    axios.get(apiUrl).then(displayRecipe).catch((error) => {
+        console.error("Error generating recipe:", error);
+        alert("Something went wrong while generating the recipe.");
+    });
+
+    
     const recipeElement = document.querySelector("#Recipe");
-    recipeElement.innerHTML = "Generating recipe for: " + ingredients;
+    recipeElement.innerHTML = `Generating recipe for: ${ingredients}`;
+}
+
+
+const form = document.querySelector("#Ai-recipe-generator-form");
+form.addEventListener("submit", generateRecipe);
+
     
     
     
