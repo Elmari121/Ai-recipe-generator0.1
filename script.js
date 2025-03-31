@@ -1,18 +1,37 @@
 
-
 function displayRecipe(response) {
     const recipeElement = document.querySelector("#Recipe");
     const loadingIndicator = document.querySelector("#loading-indicator");
 
     loadingIndicator.style.display = 'none'; 
-    recipeElement.innerHTML = ''; 
+    recipeElement.innerHTML = '';
 
+    
     new Typewriter(recipeElement, {
-        strings: response.data.answer,
+        strings: formatRecipe(response.data.answer),
         autoStart: true,
-        delay: 75, 
+        delay: 50,
         cursor: "",
     });
+}
+
+
+function formatRecipe(recipeText) {
+    
+    let formattedRecipe = recipeText;
+
+   
+
+    
+    formattedRecipe = formattedRecipe.replace(/Ingredients:/, "<h3>Ingredients:</h3><ul>");
+    formattedRecipe = formattedRecipe.replace(/Instructions:/, "</ul><h3>Instructions:</h3><ol>");
+
+
+    formattedRecipe = formattedRecipe.replace(/, /g, "</li><li>").replace(/\n/g, "</li><li>");
+
+    formattedRecipe = "<ul><li>" + formattedRecipe + "</li></ul>"; 
+
+    return formattedRecipe; 
 }
 
 
@@ -20,8 +39,9 @@ function generateRecipe(event) {
     event.preventDefault();
 
     const ingredients = document.querySelector("#ingredients").value.trim();
-
     const loadingIndicator = document.querySelector("#loading-indicator");
+
+    
     if (!ingredients) {
         alert("Please enter some ingredients.");
         return;
