@@ -10,7 +10,7 @@ function displayRecipe(response) {
     new Typewriter(recipeElement, {
         strings: formatRecipe(response.data.answer),
         autoStart: true,
-        delay: 50,
+        delay: 30,
         cursor: "",
     });
 }
