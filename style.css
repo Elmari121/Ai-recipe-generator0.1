@@ -1,6 +1,6 @@
 
 body {
-    background: linear-gradient(to top, #ff9f9f 0%, #ffdbd8 100%); 
+    background: radial-gradient(circle at 10% 20%, rgb(253, 101, 133) 0%, rgb(255, 211, 165) 90%);
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -48,7 +48,7 @@ form {
     padding: 16px;
     font-size: 1.1rem;
     border-radius: 10px;
-    border: 1px solid #ff6f61; 
+    border: 1px solid #c54c82; 
     background-color: #ffe6e1; 
     margin-bottom: 20px;
     transition: 0.3s ease-in-out;
@@ -64,7 +64,7 @@ form {
     width: 180px;
     padding: 12px 24px;
     font-size: 1.2rem;
-    background-color: #ff6f61; 
+    background-color: #ec729c; 
     color: white;
     border: none;
     border-radius: 50px;
@@ -73,7 +73,7 @@ form {
 }
 
 .button:hover {
-    background-color: #ff3d35; 
+    background-color: #c54c82;
     transform: scale(1.05); 
 }
 
@@ -135,11 +135,11 @@ footer {
 }
 
 footer a {
-    color: #ff6f61;
+    color:#ec729c;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: #d35400; 
+    color:  #c54c82;
 }
